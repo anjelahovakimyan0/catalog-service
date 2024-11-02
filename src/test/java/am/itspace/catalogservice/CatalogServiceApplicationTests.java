@@ -1,13 +1,40 @@
 package am.itspace.catalogservice;
 
+import am.itspace.catalogservice.domain.Book;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.web.reactive.server.WebTestClient;
 
-@SpringBootTest
+import static org.assertj.core.api.Assertions.assertThat;
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CatalogServiceApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+    @Autowired
+    private WebTestClient webTestClient;
 
+    @Test
+    void whenGetRequestWithIdThenBookReturned() {
+        var bookIsbn = "1231231230";
+        var bookToCreate = new Book(bookIsbn, "Title", "Author", 9.0);
+        Book expectedBook = webTestClient
+                .post()
+                .uri("/books")
+                .bodyValue(bookToCreate)
+                .exchange()
+                .expectStatus().isCreated()
+                .expectBody(Book.class).value(book -> assertThat(book).isNotNull())
+                .returnResult().getResponseBody();
+
+        webTestClient
+                .get()
+                .uri("/books/" + bookIsbn)
+                .exchange()
+                .expectStatus().is2xxSuccessful()
+                .expectBody(Book.class).value(actualBook -> {
+                    assertThat(actualBook).isNotNull();
+                    assertThat(actualBook.isbn()).isEqualTo(expectedBook.isbn());
+                });
+    }
 }

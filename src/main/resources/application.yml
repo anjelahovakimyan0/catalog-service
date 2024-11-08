@@ -16,3 +16,8 @@ server:
             min-spare: 5
 bookshop:
     greeting: "Welcome to the bookshop catalog local!"
+management:
+    endpoints:
+        web:
+            exposure:
+                include: refresh

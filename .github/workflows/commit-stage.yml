@@ -47,7 +47,7 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew bootBuildImage \
-            --imageName ghcr.io/catalog-service:latest
+            --imageName ghcr.io/anjelahovakimyan0/catalog-service:latest
       - name: OCI image vulnerability scanning
         uses: anchore/scan-action@v3
         id: scan
@@ -68,5 +68,4 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish container image
         run: |
-          chmod +x gradlew
           docker push ghcr.io/${{ github.repository }}:latest

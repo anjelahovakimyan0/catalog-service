@@ -68,4 +68,5 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish container image
         run: |
+          chmod +x gradlew
           docker push ghcr.io/${{ github.repository }}:latest

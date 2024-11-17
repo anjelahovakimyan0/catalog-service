@@ -47,12 +47,12 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew bootBuildImage \
-            --imageName my-registry/catalog-service:latest
+            --imageName docker.io/catalog-service:latest
       - name: OCI image vulnerability scanning
         uses: anchore/scan-action@v3
         id: scan
         with:
-          image: my-registry/catalog-service:latest
+          image: docker.io/catalog-service:latest
           fail-build: false
           severity-cutoff: high
       - name: Upload vulnerability report
@@ -63,8 +63,8 @@ jobs:
       - name: Log into container registry
         uses: docker/login-action@v3
         with:
-          registry: my-registry
+          registry: docker.io
           username: catalog-service
           password: latest
       - name: Publish container image
-        run: docker push my-registry/catalog-service:latest
+        run: docker push docker.io/catalog-service:latest

@@ -34,7 +34,6 @@ jobs:
       contents: read
       packages: write
       security-events: write
-      id-token: write
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
@@ -66,7 +65,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: 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
       - name: Publish container image
         run: |
           docker push ghcr.io/anjelahovakimyan0/catalog-service:latest

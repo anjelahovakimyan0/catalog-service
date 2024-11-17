@@ -33,7 +33,7 @@ public class BookControllerMvcTests {
     @Test
     void whenGetBookExistingThenShouldReturn200() throws Exception {
         var isbn = "7373731394";
-        var expectedBook = new Book(isbn, "Title", "Author", 9.90);
+        var expectedBook = Book.of(isbn, "Title", "Author", 9.90, null);
         given(bookService.viewBookDetails(isbn)).willReturn(expectedBook);
         mockMvc
                 .perform(get("/books/" + isbn))
@@ -60,7 +60,7 @@ public class BookControllerMvcTests {
     @Test
     void whenPostBookThenShouldReturn201() throws Exception {
         var isbn = "7373731394";
-        var bookToCreate = new Book(isbn, "Title", "Author", 9.90);
+        var bookToCreate = Book.of(isbn, "Title", "Author", 9.90, null);
         given(bookService.addBookToCatalog(bookToCreate)).willReturn(bookToCreate);
         mockMvc
                 .perform(post("/books")
@@ -72,7 +72,7 @@ public class BookControllerMvcTests {
     @Test
     void whenPutBookThenShouldReturn200() throws Exception {
         var isbn = "7373731394";
-        var bookToCreate = new Book(isbn, "Title", "Author", 9.90);
+        var bookToCreate = Book.of(isbn, "Title", "Author", 9.90, null);
         given(bookService.addBookToCatalog(bookToCreate)).willReturn(bookToCreate);
         mockMvc
                 .perform(put("/books/" + isbn)

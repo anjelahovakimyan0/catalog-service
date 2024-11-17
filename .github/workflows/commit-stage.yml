@@ -67,8 +67,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish container image
-        uses: docker/build-push-action@v3
-        with:
-            context: .
-            push: true
-            tags: ghcr.io/catalog-service:latest
+        run: |
+          docker tag ghcr.io/catalog-service:latest ghcr.io/catalog-service:latest
+          docker push ghcr.io/catalog-service:latest

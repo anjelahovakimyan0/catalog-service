@@ -66,4 +66,4 @@ jobs:
       - name: Publish container image
         run: |
           docker images
-          docker push latest
+          docker push catalog-service

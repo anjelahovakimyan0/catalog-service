@@ -67,7 +67,9 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: "anjelahovakimyan06@gmail.com"
           password: "hhhhhh1JJ"
+      - name: Build and tag the Docker image
+        run: |
+          docker build -t hhhhhh435/catalog-service:latest .
       - name: Publish container image
         run: |
-          docker tag catalog-service hhhhhh435/catalog-service
           docker push catalog-service

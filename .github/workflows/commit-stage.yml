@@ -62,9 +62,11 @@ jobs:
           sarif_file: ${{ steps.scan.outputs.sarif }}
         continue-on-error: true
       - name: Log into container registry
-        run: |
-          echo hhhhhh1JJ | docker login --username anjelahovakimyan06@gmail.com --password-stdin
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: "anjelahovakimyan06@gmail.com"
+          password: "hhhhhh1JJ"
       - name: Publish container image
         run: |
-          docker images
-          docker push docker.io/hhhhhh435/catalog-service
+          docker push docker.io/catalog-service

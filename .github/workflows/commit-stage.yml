@@ -62,7 +62,7 @@ jobs:
           sarif_file: ${{ steps.scan.outputs.sarif }}
         continue-on-error: true
       - name: Log into container registry
-        run: docker login --username anjelahovakimyan06@gmail.com --password hhhhhh1JJ
+        run: docker login --username anjelahovakimyan06@gmail.com --password-stdin
       - name: Publish container image
         run: |
           docker images

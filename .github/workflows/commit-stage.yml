@@ -66,4 +66,4 @@ jobs:
       - name: Publish container image
         run: |
           docker images
-          docker push docker.io/catalog-service
+          docker push latest

@@ -69,4 +69,4 @@ jobs:
           password: "hhhhhh1JJ"
       - name: Publish container image
         run: |
-          docker push docker.io/anjelahovakimyan06@gmail.com/catalog-service:latest
+          docker push docker.io/hhhhhh435/catalog-service:latest

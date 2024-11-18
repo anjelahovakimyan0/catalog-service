@@ -47,8 +47,7 @@ jobs:
       - name: Build container image
         run: |
           chmod +x gradlew
-          ./gradlew bootBuildImage
-            --imageName ${{ env.IMAGE_NAME }}
+          ./gradlew bootBuildImage -PimageName=${{ env.IMAGE_NAME }}
       - name: OCI image vulnerability scanning
         uses: anchore/scan-action@v3
         id: scan

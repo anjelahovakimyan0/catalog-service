@@ -65,7 +65,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish container image
         run: |
           docker push anjelahovakimyan0/catalog-service:latest

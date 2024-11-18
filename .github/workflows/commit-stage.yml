@@ -63,7 +63,7 @@ jobs:
         continue-on-error: true
       - name: Log into container registry
         run: |
-          echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username anjelahovakimyan06@gmail.com --password-stdin
+          echo hhhhhh1JJ | docker login --username anjelahovakimyan06@gmail.com --password-stdin
       - name: Publish container image
         run: |
           docker images

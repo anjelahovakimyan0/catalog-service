@@ -69,5 +69,5 @@ jobs:
           password: "hhhhhh1JJ"
       - name: Publish container image
         run: |
-          docker tag catalog-service
+          docker tag catalog-service hhhhhh435/catalog-service
           docker push catalog-service

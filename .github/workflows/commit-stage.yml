@@ -69,4 +69,8 @@ jobs:
           password: "hhhhhh1JJ"
       - name: Publish container image
         run: |
-          docker push catalog-service:latest
+          docker logout
+          docker build -t catalog-service .
+          docker tag catalog-service anjelahovakimyan0/catalog-service:catalog-service
+          docker login -u anjelahovakimyan06@gmail.com -p hhhhhh1JJ
+          docker push anjelahovakimyan0/catalog-service:catalog-service

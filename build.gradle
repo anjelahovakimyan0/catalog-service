@@ -58,7 +58,7 @@ tasks.named('test') {
 
 bootBuildImage {
     builder = "docker.io/paketobuildpacks/builder-jammy-base"
-    imageName = "${project.name}"
+    imageName = "anjelahovakimyan0/jhooq-docker-demo"
     environment = ["BP_JVM_VERSION": "17"]
 
     docker {

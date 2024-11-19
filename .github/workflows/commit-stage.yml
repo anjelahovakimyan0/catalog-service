@@ -74,3 +74,4 @@ jobs:
           docker tag jhooq-docker-demo anjelahovakimyan0/jhooq-docker-demo:jhooq-docker-demo
           docker login -u anjelahovakimyan06@gmail.com --password-stdin
           docker push anjelahovakimyan0/jhooq-docker-demo:jhooq-docker-demo
+        continue-on-error: true

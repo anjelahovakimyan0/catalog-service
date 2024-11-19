@@ -62,10 +62,7 @@ jobs:
           sarif_file: ${{ steps.scan.outputs.sarif }}
         continue-on-error: true
       - name: Log out and build
-        run: |
-          docker logout
-          docker build -t jhooq-docker-demo .
-          docker tag jhooq-docker-demo anjelahovakimyan0/jhooq-docker-demo:jhooq-docker-demo
+        run:
       - name: Log into container registry
         uses: docker/login-action@v3
         with:
@@ -73,5 +70,7 @@ jobs:
           username: "anjelahovakimyan06@gmail.com"
           password: "hhhhhh1JJ"
       - name: Publish container image
-        run:
+        run: |
+          docker build -t jhooq-docker-demo .
+          docker tag jhooq-docker-demo anjelahovakimyan0/jhooq-docker-demo:jhooq-docker-demo
           docker push anjelahovakimyan0/jhooq-docker-demo:jhooq-docker-demo

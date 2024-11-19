@@ -72,5 +72,5 @@ jobs:
           docker logout
           docker build -t catalog-service .
           docker tag catalog-service anjelahovakimyan0/catalog-service:catalog-service
-          docker login -u anjelahovakimyan06@gmail.com -p hhhhhh1JJ
+          docker login -u anjelahovakimyan06@gmail.com --password-stdin
           docker push anjelahovakimyan0/catalog-service:catalog-service

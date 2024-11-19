@@ -70,7 +70,7 @@ jobs:
       - name: Publish container image
         run: |
           docker logout
-          docker build -t catalog-service .
-          docker tag catalog-service anjelahovakimyan0/catalog-service:catalog-service
+          docker build -t jhooq-docker-demo .
+          docker tag jhooq-docker-demo anjelahovakimyan0/jhooq-docker-demo:jhooq-docker-demo
           docker login -u anjelahovakimyan06@gmail.com --password-stdin
-          docker push anjelahovakimyan0/catalog-service:catalog-service
+          docker push anjelahovakimyan0/jhooq-docker-demo:jhooq-docker-demo

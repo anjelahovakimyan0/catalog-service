@@ -69,4 +69,4 @@ jobs:
           password: "hhhhhh1JJ"
       - name: Publish container image
         run: |
-          docker push "${{ env.REGISTRY }}"/"${{ env.IMAGE_NAME }}":"${{ env.VERSION }}"
+          docker push catalog-service:latest

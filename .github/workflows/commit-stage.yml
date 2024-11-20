@@ -66,5 +66,5 @@ jobs:
           docker logout
           docker build -t jhooq-docker-demo .
           docker tag jhooq-docker-demo hhhhhh435/jhooq-docker-demo:jhooq-docker-demo
-          docker login -u anjelahovakimyan06@gmail.com -p ${{ secrets.DOCKER_PASSWORD }}
+          docker login -u hhhhhh435 -p ${{ secrets.DOCKER_PASSWORD }}
           docker push hhhhhh435/jhooq-docker-demo:jhooq-docker-demo

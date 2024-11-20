@@ -63,5 +63,8 @@ jobs:
         continue-on-error: true
       - name: Log into container registry & Publish container image
         run: |
+          docker logout
+          docker build -t catalog-service .
+          docker tag catalog-service hhhhhh435/catalog-service:catalog-service
           docker login -u hhhhhh435 -p ${{ secrets.DOCKER_PASSWORD }}
           docker push hhhhhh435/catalog-service:catalog-service

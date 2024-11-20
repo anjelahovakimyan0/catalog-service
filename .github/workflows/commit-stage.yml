@@ -52,7 +52,7 @@ jobs:
         uses: anchore/scan-action@v3
         id: scan
         with:
-          image: docker.io/jhooq-docker-demo:jhooq-docker-demo
+          image: docker.io/catalog-service:catalog-service
           fail-build: false
           severity-cutoff: high
       - name: Upload vulnerability report
@@ -61,10 +61,11 @@ jobs:
         with:
           sarif_file: ${{ steps.scan.outputs.sarif }}
         continue-on-error: true
+      - name: Log into container registry
+        uses: docker/login-action@v3
+        with:
+          registry: docker.io
+          username: hhhhhh435
+          password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Publish container image
-        run: |
-          docker logout
-          docker build -t jhooq-docker-demo .
-          docker tag jhooq-docker-demo hhhhhh435/jhooq-docker-demo:jhooq-docker-demo
-          docker login -u hhhhhh435 -p ${{ secrets.DOCKER_PASSWORD }}
-          docker push hhhhhh435/jhooq-docker-demo:jhooq-docker-demo
+        run: docker push hhhhhh435/catalog-service:catalog-service

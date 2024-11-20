@@ -64,7 +64,7 @@ jobs:
         uses: anchore/scan-action@v3
         id: scan
         with:
-          image: ${{ env.REGISTRY }}/${{ IMAGE_NAME }}:${{ IMAGE_NAME }}
+          image: ${{ secrets.REGISTRY }}/${{ secrets.IMAGE_NAME }}:${{ secrets.IMAGE_NAME }}
           fail-build: false
           severity-cutoff: high
       - name: Upload vulnerability report
@@ -76,7 +76,7 @@ jobs:
       - name: Log into container registry & Publish container image
         run: |
           docker logout
-          docker build -t ${{ IMAGE_NAME }} .
-          docker tag ${{ IMAGE_NAME }} ${{ DOCKER_USERNAME }}/${{ IMAGE_NAME }}:${{ IMAGE_NAME }}
-          docker login -u ${{ DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker push ${{ DOCKER_USERNAME }}/${{ IMAGE_NAME }}:${{ IMAGE_NAME }}
+          docker build -t ${{ secrets.IMAGE_NAME }} .
+          docker tag ${{ secrets.IMAGE_NAME }} ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME }}:${{ secrets.IMAGE_NAME }}
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.IMAGE_NAME }}:${{ secrets.IMAGE_NAME }}

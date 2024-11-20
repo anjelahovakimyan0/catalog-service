@@ -52,7 +52,7 @@ jobs:
         uses: anchore/scan-action@v3
         id: scan
         with:
-          image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+          image: docker.io/jhooq-docker-demo:jhooq-docker-demo
           fail-build: false
           severity-cutoff: high
       - name: Upload vulnerability report
@@ -65,6 +65,6 @@ jobs:
         run: |
           docker logout
           docker build -t jhooq-docker-demo .
-          docker tag jhooq-docker-demo library/jhooq-docker-demo:jhooq-docker-demo
+          docker tag jhooq-docker-demo hhhhhh435/jhooq-docker-demo:jhooq-docker-demo
           docker login -u anjelahovakimyan06@gmail.com -p ${{ secrets.DOCKER_PASSWORD }}
-          docker push library/jhooq-docker-demo:jhooq-docker-demo
+          docker push hhhhhh435/jhooq-docker-demo:jhooq-docker-demo

@@ -76,9 +76,14 @@ jobs:
         continue-on-error: true
       - name: Install pack CLI
         run: |
-          curl -LO https://github.com/buildpacks/pack/releases/download/v0.27.0/pack-v0.27.0-linux.x86_64.tgz
-          sudo mv pack-v0.27.0-linux.x86_64 /usr/local/bin/pack
-          sudo chmod +x /usr/local/bin/pack
+    # Get the URL of the latest release
+          DOWNLOAD_URL=$(curl -s https://api.github.com/repos/buildpacks/pack/releases/tags/v0.27.0 | jq -r '.assets[] | select(.name | test("linux.*.tgz")) | .browser_download_url')
+    
+    # Download the file
+          curl -LO $DOWNLOAD_URL
+
+    # Extract the downloaded file
+          tar -xvzf pack-v0.27.0-linux.x86_64.tgz -C /usr/local/bin
       - name: Log into container registry & Publish container image
         run: |
           docker login ${{ env.REGISTRY }} -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}

@@ -63,8 +63,8 @@ bootBuildImage {
 
     docker {
         publishRegistry {
-            username = anjelahovakimyan0
-            password = --password-stdin
+            username = '${{ github.actor }}'
+            password = '${{ secrets.GITHUB_TOKEN }}'
             url = "ghcr.io"
         }
     }

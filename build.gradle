@@ -58,14 +58,14 @@ tasks.named('test') {
 
 bootBuildImage {
     builder = "docker.io/paketobuildpacks/builder-jammy-base"
-    imageName = "${project.name}"
+    imageName = "ghcr.io/${project.group}/${project.name}"
     environment = ["BP_JVM_VERSION": "17"]
 
     docker {
         publishRegistry {
-            username = project.findProperty("registryUsername")
-            password = project.findProperty("registryToken")
-            url = project.findProperty("registryUrl")
+            username = project.findProperty("ghcrUsername") ?: System.getenv("GHCR_USERNAME")
+            password = project.findProperty("ghcrToken") ?: System.getenv("GHCR_TOKEN")
+            url = "ghcr.io"
         }
     }
 }

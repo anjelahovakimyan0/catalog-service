@@ -5,6 +5,7 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: anjelahovakimyan0/catalog-service
   VERSION: ${{ github.sha }}
+  GITHUB_USERNAME: anjelahovakimyan0
 
 jobs:
   build:
@@ -76,6 +77,6 @@ jobs:
       - name: Log into container registry & Publish container image
         run: |
             docker logout
-            docker tag ${{ env.IMAGE_NAME }} ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_NAME }}
+            docker tag ${{ env.IMAGE_NAME }} ${{ env.GITHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
             docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
             docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}

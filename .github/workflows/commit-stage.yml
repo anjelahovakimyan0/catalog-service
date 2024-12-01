@@ -60,7 +60,7 @@ jobs:
       - name: Build container image
         run: |
           chmod +x gradlew
-          ./gradlew bootBuildImage
+          ./gradlew bootBuildImage --no-build-cache
       - name: OCI image vulnerability scanning
         uses: anchore/scan-action@v3
         id: scan

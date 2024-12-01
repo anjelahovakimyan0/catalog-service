@@ -76,7 +76,6 @@ jobs:
       - name: Log into container registry & Publish container image
         run: |
             docker logout
-            docker build -t ${{ env.IMAGE_NAME }} .
             docker tag ${{ env.IMAGE_NAME }} ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_NAME }}
             docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
             docker push ${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_NAME }}

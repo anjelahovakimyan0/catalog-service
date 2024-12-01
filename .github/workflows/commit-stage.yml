@@ -78,6 +78,4 @@ jobs:
             docker logout
             docker tag ${{ env.IMAGE_NAME }} ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_NAME }}
             docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
-            docker push ${{ env.IMAGE_NAME }}:${{ env.IMAGE_NAME }}
-      - name: Publish container image
-        run: docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+            docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}

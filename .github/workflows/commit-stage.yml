@@ -76,7 +76,9 @@ jobs:
         continue-on-error: true
       - name: Install pack CLI
         run: |
-          curl -sSL https://github.com/buildpacks/pack/releases/download/v0.27.0/pack-v0.27.0-linux.x86_64.tgz | tar -C /usr/local/bin -xvzf -
+          curl -LO https://github.com/buildpacks/pack/releases/download/v0.27.0/pack-v0.27.0-linux.x86_64.tgz
+          sudo mv pack-v0.27.0-linux.x86_64 /usr/local/bin/pack
+          sudo chmod +x /usr/local/bin/pack
       - name: Log into container registry & Publish container image
         run: |
           docker login ${{ env.REGISTRY }} -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}

@@ -3,7 +3,7 @@ on: push
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: anjelahovakimyan0/catalog-service
+  IMAGE_NAME: catalog-service
   VERSION: ${{ github.sha }}
   GITHUB_USERNAME: anjelahovakimyan0
 

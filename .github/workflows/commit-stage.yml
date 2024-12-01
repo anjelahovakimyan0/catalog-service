@@ -78,6 +78,7 @@ jobs:
         run: |
           docker login ${{ env.REGISTRY }} -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
           sudo snap install pack --classic
+          brew install buildpacks/tap/pack
           pack build ${{ env.IMAGE_NAME }} --path . --builder heroku/buildpacks:20
           docker tag ${{ env.IMAGE_NAME }} ${{ env.REGISTRY }}/${{ env.GITHUB_REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
           docker push ${{ env.REGISTRY }}/${{ env.GITHUB_REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}

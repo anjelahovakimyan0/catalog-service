@@ -75,6 +75,6 @@ jobs:
           sarif_file: ${{ steps.scan.outputs.sarif }}
       - name: Log into container registry & Publish container image
         run: |
-          docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
+          docker login ${{ env.REGISTRY }} -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }}
           docker tag ${{ env.IMAGE_NAME }}:${{ env.VERSION }} ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
           docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}

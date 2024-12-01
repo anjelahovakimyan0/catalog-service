@@ -63,8 +63,8 @@ bootBuildImage {
 
     docker {
         publishRegistry {
-            username = project.findProperty("ghcrUsername") ?: System.getenv("GHCR_USERNAME")
-            password = project.findProperty("ghcrToken") ?: System.getenv("GHCR_TOKEN")
+            username = project.findProperty("ghcrUsername")
+            password = project.findProperty("ghcrToken")
             url = "ghcr.io"
         }
     }

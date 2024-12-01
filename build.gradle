@@ -63,7 +63,6 @@ bootBuildImage {
 
     docker {
         publishRegistry {
-            username = System.getenv("GITHUB_ACTOR")
             password = System.getenv("GITHUB_TOKEN")
             url = "ghcr.io"
         }

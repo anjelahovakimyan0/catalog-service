@@ -79,5 +79,5 @@ jobs:
           docker logout
           docker build -t ${{ env.IMAGE_NAME }} .
           docker tag ${{ env.IMAGE_NAME }} ${{ env.GITHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_NAME }}
-          docker login -u ${{ env.GITHUB_USERNAME }} -password-stdin
+          docker login ${{ env.REGISTRY }} -u ${{ env.GITHUB_USERNAME }} -password-stdin
           docker push ${{ env.GITHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_NAME }}

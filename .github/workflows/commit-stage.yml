@@ -76,7 +76,7 @@ jobs:
         continue-on-error: true
       - name: Log into container registry & Publish container image
         run: |
-          docker image build -t ${{ env.IMAGE_NAME }}:1.0.0
+          docker build -t ${{ env.IMAGE_NAME }}:1.0.0
           docker login ${{ env.REGISTRY }} -u ${{ env.GITHUB_USERNAME }} -p ${{ secrets.TOKEN_GITHUB }}
           docker tag ${{ env.IMAGE_NAME }}:1.0.0 ${{ env.REGISTRY }}/${{ env.GITHUB_USERNAME }}/${{ env.IMAGE_NAME }}:1.0.0
           docker push ${{ env.REGISTRY }}/${{ env.GITHUB_USERNAME }}/${{ env.IMAGE_NAME }}:1.0.0

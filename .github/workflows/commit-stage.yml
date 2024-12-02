@@ -76,5 +76,5 @@ jobs:
       - name: Log into container registry & Publish container image
         run: |
           docker login ${{ env.REGISTRY }} -u ${{ env.GITHUB_USERNAME }} -p ${{ secrets.TOKEN_GITHUB }}
-          docker tag ${{ env.IMAGE_NAME }}:latest ${{ env.REGISTRY }}/${{ env.GITHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+          docker tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest ${{ env.REGISTRY }}/${{ env.GITHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
           docker push ${{ env.REGISTRY }}/${{ env.GITHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
